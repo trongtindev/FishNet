@@ -2,6 +2,7 @@
 using FishNet.Documenting;
 using System.Collections.Generic;
 using UnityEditor;
+using UnityEditor.Build;
 using UnityEngine;
 
 namespace FishNet.Editing.Upgrading
@@ -40,7 +41,8 @@ namespace FishNet.Editing.Upgrading
 
         private static bool RemoveOrAddDefine(string define, bool removeDefine)
         {
-            string currentDefines = PlayerSettings.GetScriptingDefineSymbolsForGroup(EditorUserBuildSettings.selectedBuildTargetGroup);
+            var buildTarget = NamedBuildTarget.FromBuildTargetGroup(EditorUserBuildSettings.selectedBuildTargetGroup);
+            string currentDefines = PlayerSettings.GetScriptingDefineSymbols(buildTarget);
             HashSet<string> definesHs = new();
             string[] currentArr = currentDefines.Split(';');
 
@@ -59,14 +61,11 @@ namespace FishNet.Editing.Upgrading
             if (modified)
             {
                 string changedDefines = string.Join(";", definesHs);
-                PlayerSettings.SetScriptingDefineSymbolsForGroup(EditorUserBuildSettings.selectedBuildTargetGroup, changedDefines);
+                PlayerSettings.SetScriptingDefineSymbols(buildTarget, changedDefines);
             }
 
             return modified;
         }
-
-
-
     }
 }
 #endif

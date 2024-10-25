@@ -116,14 +116,14 @@ namespace FishNet.Object.Prediction
 
         [DefaultDeltaReader]
         public static PredictionRigidbody.EntryData ReadDeltaEntryData(this Reader r) => r.ReadEntryData();
-        
+
         [DefaultDeltaWriter]
         public static bool WriteDeltaPredictionRigidbody(this Writer w, PredictionRigidbody pr)
         {
             w.WritePredictionRigidbody(pr);
             return true;
         }
-        
+
         [DefaultDeltaReader]
         public static PredictionRigidbody ReadDeltaPredictionRigidbody(this Reader r) => r.ReadPredictionRigidbody();
     }
@@ -311,7 +311,7 @@ namespace FishNet.Object.Prediction
         /// </summary>
         public void Velocity(Vector3 force)
         {
-            Rigidbody.velocity = force;
+            Rigidbody.linearVelocity = force;
             RemoveForces(true);
         }
 

@@ -8,7 +8,7 @@ namespace FishNet.Component.Prediction
     [UseGlobalCustomSerializer]
     [Preserve]
     public struct RigidbodyState
-    {        
+    {
         public Vector3 Position;
         public Quaternion Rotation;
         public bool IsKinematic;
@@ -20,7 +20,7 @@ namespace FishNet.Component.Prediction
             Position = rb.transform.position;
             Rotation = rb.transform.rotation;
             IsKinematic = isKinematic;
-            Velocity = rb.velocity;
+            Velocity = rb.linearVelocity;
             AngularVelocity = rb.angularVelocity;
         }
         public RigidbodyState(Rigidbody rb)
@@ -28,7 +28,7 @@ namespace FishNet.Component.Prediction
             Position = rb.transform.position;
             Rotation = rb.transform.rotation;
             IsKinematic = rb.isKinematic;
-            Velocity = rb.velocity;
+            Velocity = rb.linearVelocity;
             AngularVelocity = rb.angularVelocity;
         }
     }
@@ -42,26 +42,26 @@ namespace FishNet.Component.Prediction
         public Vector2 Velocity;
         public float AngularVelocity;
         public bool Simulated;
-        public bool IsKinematic;
+        public RigidbodyType2D BodyType;
 
         public Rigidbody2DState(Rigidbody2D rb, bool simulated)
         {
             Position = rb.transform.position;
             Rotation = rb.transform.rotation;
-            Velocity = rb.velocity;
+            Velocity = rb.linearVelocity;
             AngularVelocity = rb.angularVelocity;
             Simulated = simulated;
-            IsKinematic = rb.isKinematic;
+            BodyType = rb.bodyType;
         }
 
         public Rigidbody2DState(Rigidbody2D rb)
         {
             Position = rb.transform.position;
             Rotation = rb.transform.rotation;
-            Velocity = rb.velocity;
+            Velocity = rb.linearVelocity;
             AngularVelocity = rb.angularVelocity;
             Simulated = rb.simulated;
-            IsKinematic = rb.isKinematic;
+            BodyType = rb.bodyType;
         }
     }
 
@@ -103,7 +103,7 @@ namespace FishNet.Component.Prediction
             writer.WriteVector3(value.Position);
             writer.WriteQuaternion32(value.Rotation);
             writer.WriteBoolean(value.Simulated);
-            writer.WriteBoolean(value.IsKinematic);
+            writer.WriteUInt8Unpacked((byte)value.BodyType);
 
             if (value.Simulated)
             {
@@ -119,7 +119,7 @@ namespace FishNet.Component.Prediction
                 Position = reader.ReadVector3(),
                 Rotation = reader.ReadQuaternion32(),
                 Simulated = reader.ReadBoolean(),
-                IsKinematic = reader.ReadBoolean()
+                BodyType = (RigidbodyType2D)reader.ReadUInt8Unpacked()
             };
 
             if (state.Simulated)
@@ -152,7 +152,7 @@ namespace FishNet.Component.Prediction
             Transform t = rb.transform;
             t.position = state.Position;
             t.rotation = state.Rotation;
-            rb.velocity = state.Velocity;
+            rb.linearVelocity = state.Velocity;
             rb.angularVelocity = state.AngularVelocity;
         }
 
@@ -171,7 +171,7 @@ namespace FishNet.Component.Prediction
             Transform t = rb.transform;
             t.position = state.Position;
             t.rotation = state.Rotation;
-            rb.velocity = state.Velocity;
+            rb.linearVelocity = state.Velocity;
             rb.angularVelocity = state.AngularVelocity;
         }
 

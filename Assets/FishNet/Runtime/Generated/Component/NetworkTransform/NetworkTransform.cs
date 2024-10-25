@@ -6,13 +6,13 @@ using FishNet.Documenting;
 using FishNet.Managing;
 using FishNet.Managing.Logging;
 using FishNet.Managing.Server;
+using FishNet.Managing.Timing;
 using FishNet.Object;
 using FishNet.Serializing;
 using FishNet.Transporting;
 using GameKit.Dependencies.Utilities;
 using System;
 using System.Collections.Generic;
-using FishNet.Managing.Timing;
 using UnityEngine;
 using UnityEngine.Scripting;
 using static FishNet.Object.NetworkObject;
@@ -823,7 +823,7 @@ namespace FishNet.Component.Transforming
                 if (TryGetComponent(out Rigidbody2D c))
                 {
                     bool isKinematic = CanMakeKinematic();
-                    c.isKinematic = isKinematic;
+                    c.bodyType = isKinematic ? RigidbodyType2D.Kinematic : RigidbodyType2D.Dynamic;
                     c.simulated = !isKinematic;
                     c.interpolation = RigidbodyInterpolation2D.None;
                 }
@@ -1601,16 +1601,16 @@ namespace FishNet.Component.Transforming
                 //No more in buffer, see if can extrapolate.
                 else
                 {
-                    
-                        /* If everything matches up then end queue.
-                         * Otherwise let it play out until stuff
-                         * aligns. Generally the time remaining is enough
-                         * but every once in awhile something goes funky
-                         * and it's thrown off. */
-                        if (!HasChanged(td))
-                            _currentGoalData = null;
-                        OnInterpolationComplete?.Invoke();
-                        
+
+                    /* If everything matches up then end queue.
+                     * Otherwise let it play out until stuff
+                     * aligns. Generally the time remaining is enough
+                     * but every once in awhile something goes funky
+                     * and it's thrown off. */
+                    if (!HasChanged(td))
+                        _currentGoalData = null;
+                    OnInterpolationComplete?.Invoke();
+
                 }
             }
         }
@@ -2127,7 +2127,7 @@ namespace FishNet.Component.Transforming
             //Default value.
             next.ExtrapolationState = TransformData.ExtrapolateState.Disabled;
 
-            
+
         }
 
         /// <summary>
