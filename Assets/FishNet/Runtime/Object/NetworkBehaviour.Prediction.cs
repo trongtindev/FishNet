@@ -238,7 +238,7 @@ namespace FishNet.Object
         /// True if this Networkbehaviour implements prediction methods.
         /// </summary>
         [APIExclude]
-        protected bool _usesPrediction;
+        private bool _usesPrediction;
         #endregion
 
         #region Consts.
