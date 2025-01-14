@@ -312,7 +312,7 @@ namespace FishNet.Component.Prediction
                      * made it kinematic. */
                     if (rbData.IsKinematic)
                         return true;
-                    
+
                     // ReSharper disable once ConditionIsAlwaysTrueOrFalse
                     rb.isKinematic = rbData.IsKinematic;
                     //rb.detectCollisions = rbData.DetectCollisions;
@@ -342,20 +342,18 @@ namespace FishNet.Component.Prediction
                 {
                     Rigidbody2DData rbData = _rigidbody2dDatas[index];
                     Rigidbody2D rb = rbData.Rigidbody2d;
-                    if (rb == null)
-                        return false;
+                    if (rb == null) return false;
 
-<<<<<<< HEAD
                     rb.bodyType = rbData.BodyType;
-=======
+
                     //Same as RB, only unpause if data is stored in an unpaused state.
-                    if (rbData.IsKinematic || !rbData.Simulated)
+                    if (rbData.BodyType == RigidbodyType2D.Kinematic || !rbData.Simulated)
                         return true;
-                    
+
                     // ReSharper disable once ConditionIsAlwaysTrueOrFalse
-                    rb.isKinematic = rbData.IsKinematic;
+                    rb.bodyType = rbData.BodyType;
+
                     // ReSharper disable once ConditionIsAlwaysTrueOrFalse
->>>>>>> upstream/main
                     rb.simulated = rbData.Simulated;
                     rb.collisionDetectionMode = rbData.CollisionDetectionMode;
                     if (rb.bodyType != RigidbodyType2D.Kinematic)
