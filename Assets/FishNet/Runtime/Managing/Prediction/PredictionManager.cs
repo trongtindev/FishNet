@@ -180,7 +180,7 @@ namespace FishNet.Managing.Predicting
         /// <summary>
         /// How many states to try and hold in a buffer before running them. Larger values add resilience against network issues at the cost of running states later.
         /// </summary> 
-        internal byte StateInterpolation => _stateInterpolation;
+        public byte StateInterpolation => _stateInterpolation;
         [Tooltip("How many states to try and hold in a buffer before running them on clients. Larger values add resilience against network issues at the cost of running states later.")]
         [Range(0, MAXIMUM_PAST_INPUTS)]
         [FormerlySerializedAs("_redundancyCount")] //Remove on V5.
@@ -345,7 +345,7 @@ namespace FishNet.Managing.Predicting
             //If changed.
             if (_stateInterpolation != startingValue)
                 _networkManager.Log($"Interpolation has been set to {_stateInterpolation}.");
-            
+
             //Check to warn if low value.
             if (_stateInterpolation == 0)
                 _networkManager.LogWarning(ZERO_STATE_INTERPOLATION_MESSAGE);
