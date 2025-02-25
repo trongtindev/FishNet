@@ -19,10 +19,6 @@ namespace FishNet.Editing
         {
             SettingsService.OpenProjectSettings("Project/Fish-Networking/Configuration");
         }
-<<<<<<< HEAD
-
-=======
->>>>>>> upstream/main
     }
 
     public class DeveloperMenu : MonoBehaviour
@@ -32,31 +28,6 @@ namespace FishNet.Editing
         private const string DEVELOPER_ONLY_WARNING = "If you are not a developer or were not instructed to do this by a developer things are likely to break. You have been warned.";
         #endregion
 
-<<<<<<< HEAD
-
-        #region Release mode.
-#if !FISHNET_STABLE_MODE
-        [MenuItem("Tools/Fish-Networking/Switch to Stable", false, -1101)]
-        private static void SwitchToStable()
-        {
-            bool result = RemoveOrAddDefine(STABLE_DEFINE, false);
-            if (result)
-                Debug.LogWarning($"Fish-Networking has been switched to Stable. Please note that experimental features may not function in this mode.");
-        }
-#else
-        [MenuItem("Tools/Fish-Networking/Switch to Beta", false, -1101)]
-        private static void SwitchToBeta()
-        {
-            bool result = RemoveOrAddDefine(STABLE_DEFINE, true);
-            if (result)
-                Debug.LogWarning($"Fish-Networking has been switched to Beta.");
-
-        }
-#endif
-        #endregion
-
-=======
->>>>>>> upstream/main
         #region QOL Attributes
 #if DISABLE_QOL_ATTRIBUTES
         [MenuItem("Tools/Fish-Networking/Utility/Quality of Life Attributes/Enable", false, -999)]
@@ -77,11 +48,7 @@ namespace FishNet.Editing
 #endif
         #endregion
 
-<<<<<<< HEAD
-        private static bool RemoveOrAddDefine(string define, bool removeDefine)
-=======
         internal static bool RemoveOrAddDefine(string define, bool removeDefine)
->>>>>>> upstream/main
         {
             var buildTarget = NamedBuildTarget.FromBuildTargetGroup(EditorUserBuildSettings.selectedBuildTargetGroup);
             string currentDefines = PlayerSettings.GetScriptingDefineSymbols(buildTarget);
@@ -110,11 +77,6 @@ namespace FishNet.Editing
         }
     }
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> upstream/main
     public class RebuildSelectedSceneIdsMenu : MonoBehaviour
     {
         /// <summary>
