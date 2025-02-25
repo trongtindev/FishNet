@@ -14,23 +14,25 @@ namespace FishNet.Editing
 {
     public class ConfigurationEditor : EditorWindow
     {
-
         [MenuItem("Tools/Fish-Networking/Configuration", false, 0)]
         public static void ShowConfiguration()
         {
             SettingsService.OpenProjectSettings("Project/Fish-Networking/Configuration");
         }
+<<<<<<< HEAD
 
+=======
+>>>>>>> upstream/main
     }
 
     public class DeveloperMenu : MonoBehaviour
     {
         #region const.
-        private const string STABLE_DEFINE = "FISHNET_STABLE_MODE";
         private const string QOL_ATTRIBUTES_DEFINE = "DISABLE_QOL_ATTRIBUTES";
         private const string DEVELOPER_ONLY_WARNING = "If you are not a developer or were not instructed to do this by a developer things are likely to break. You have been warned.";
         #endregion
 
+<<<<<<< HEAD
 
         #region Release mode.
 #if !FISHNET_STABLE_MODE
@@ -53,12 +55,14 @@ namespace FishNet.Editing
 #endif
         #endregion
 
+=======
+>>>>>>> upstream/main
         #region QOL Attributes
 #if DISABLE_QOL_ATTRIBUTES
         [MenuItem("Tools/Fish-Networking/Utility/Quality of Life Attributes/Enable", false, -999)]
         private static void EnableQOLAttributes()
         {
-            bool result = RemoveOrAddDefine(QOL_ATTRIBUTES_DEFINE, true);
+            bool result = RemoveOrAddDefine(QOL_ATTRIBUTES_DEFINE, removeDefine: true);
             if (result)
                 Debug.LogWarning($"Quality of Life Attributes have been enabled.");
         }
@@ -66,14 +70,18 @@ namespace FishNet.Editing
         [MenuItem("Tools/Fish-Networking/Utility/Quality of Life Attributes/Disable", false, -998)]
         private static void DisableQOLAttributes()
         {
-            bool result = RemoveOrAddDefine(QOL_ATTRIBUTES_DEFINE, false);
+            bool result = RemoveOrAddDefine(QOL_ATTRIBUTES_DEFINE, removeDefine: false);
             if (result)
                 Debug.LogWarning($"Quality of Life Attributes have been disabled. {DEVELOPER_ONLY_WARNING}");
         }
 #endif
         #endregion
 
+<<<<<<< HEAD
         private static bool RemoveOrAddDefine(string define, bool removeDefine)
+=======
+        internal static bool RemoveOrAddDefine(string define, bool removeDefine)
+>>>>>>> upstream/main
         {
             var buildTarget = NamedBuildTarget.FromBuildTargetGroup(EditorUserBuildSettings.selectedBuildTargetGroup);
             string currentDefines = PlayerSettings.GetScriptingDefineSymbols(buildTarget);
@@ -100,12 +108,13 @@ namespace FishNet.Editing
 
             return modified;
         }
-
-
     }
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> upstream/main
     public class RebuildSelectedSceneIdsMenu : MonoBehaviour
     {
         /// <summary>
@@ -169,8 +178,6 @@ namespace FishNet.Editing
             string saveText = (changedObjects > 0) ? " Please save your open scenes." : string.Empty;
             Debug.Log($"SceneIds were generated for {changedObjects} object(s) over {checkedScenes} scene(s). {checkedObjects} object(s) were checked in total. {saveText}");
         }
-
-
     }
 
     public class RefreshDefaultPrefabsMenu : MonoBehaviour
@@ -191,9 +198,7 @@ namespace FishNet.Editing
             Debug.Log("Refreshing default prefabs.");
             Generator.GenerateFull(null, true);
         }
-
     }
-
 
     public class RemoveDuplicateNetworkObjectsMenu : MonoBehaviour
     {
@@ -201,7 +206,6 @@ namespace FishNet.Editing
         /// Iterates all network object prefabs in the project and open scenes, removing NetworkObject components which exist multiple times on a single object.
         /// </summary>
         [MenuItem("Tools/Fish-Networking/Remove Duplicate NetworkObjects", false, 21)]
-
         public static void RemoveDuplicateNetworkObjects()
         {
 #if PARRELSYNC
@@ -244,11 +248,7 @@ namespace FishNet.Editing
             if (removed > 0)
                 RebuildSceneIdMenu.RebuildSceneIds();
         }
-
     }
-
-
-
-
 }
+
 #endif

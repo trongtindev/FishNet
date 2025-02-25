@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/FishNet/Edgegap/Runtime/Transporting/Transports/Edgegap KcpTransport/Runtime/EdgegapKcpTransport.cs.meta
 guid: eb0cec7fd2b24b1b97d5ec7a302b6519
+========
+guid: ecf03df72c983164586a22e695d17905
+>>>>>>>> upstream/main:Assets/FishNet/Runtime/Editor/Configuring/BetaModeMenu.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2

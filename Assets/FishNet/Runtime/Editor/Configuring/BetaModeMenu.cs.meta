@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/FishNet/Edgegap/Runtime/Transporting/Transports/Edgegap KcpTransport/Runtime/EdgegapKcpTransport.cs.meta
+guid: dbf0c31a8da1e0b4396446b9455dedeb
+========
+guid: ecf03df72c983164586a22e695d17905
+>>>>>>>> upstream/main:Assets/FishNet/Runtime/Editor/Configuring/BetaModeMenu.cs.meta
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {fileID: 2800000, guid: f892095b95a21d548ac38f5441eac465, type: 3}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
