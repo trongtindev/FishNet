@@ -347,7 +347,7 @@ namespace FishNet.Managing.Predicting
             //If changed.
             if (_stateInterpolation != startingValue)
                 _networkManager.Log($"Interpolation has been set to {_stateInterpolation}.");
-
+            
             //Check to warn if low value.
             if (_stateInterpolation == 0)
                 _networkManager.LogWarning(ZERO_STATE_INTERPOLATION_MESSAGE);

@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/FishNet/Edgegap/Runtime/Transporting/Transports/KcpTransport/Runtime/KcpTransport.cs.meta
-guid: 9c939335e1a707647ad2133722e67da2
-========
 guid: 859294e5d2aaf9a47b1e00bd20772f2b
->>>>>>>> upstream/main:Assets/FishNet/Runtime/Generated/Component/Spawning/ServerSpawner.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2

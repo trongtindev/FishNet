@@ -20,3 +20,4 @@ Documentation
 *.vsconfig
 *.csproj.meta
 .idea
+.DS_Store
